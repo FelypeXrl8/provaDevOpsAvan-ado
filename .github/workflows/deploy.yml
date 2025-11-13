@@ -8,8 +8,16 @@ on:
 permissions:
   contents: write
 jobs:
+  mostrar_hora:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Exibir hora do push
+        run: |
+          echo "Data e hora do último push:"
+          date -u +"%Y-%m-%d %H:%M:%S %Z"
+            
   deploy:
-    needs: build
+    needs: mostrar_hora
     runs-on: ubuntu-latest
     steps:
       - name: Baixar código
